@@ -161,11 +161,13 @@ h1 {
 }
 .hero-cta:hover { background: var(--red-deep); color: #fff; transform: translateY(-1px); }
 
+/* He stands on the red band and runs off the right edge: big enough to read as a person,
+   not a stamp. The negative top margin tucks him behind the copy so the hero stays short. */
 .hero-bill {
   justify-self: end;
   width: auto;
-  height: 250px;
-  margin: -34px -6px 0 0;
+  height: 360px;
+  margin: -86px -28px 0 0;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
   position: relative; z-index: 1;
 }
@@ -445,7 +447,7 @@ select { padding-right: 44px; cursor: pointer; }
   }
   .hero-copy { padding-bottom: 56px; }
   .lede { font-size: 1.25rem; }
-  .hero-bill { height: 440px; margin: 0; justify-self: center; }
+  .hero-bill { height: 540px; margin: 0 -12px 0 0; justify-self: center; }
   .letter { padding: 64px 24px 56px; }
   .sign-inner { padding: 60px 24px 72px; }
 }

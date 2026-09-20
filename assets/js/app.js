@@ -57,6 +57,7 @@
   });
   if ($('outlets-list').children.length) $('outlets').hidden = false;
   if (C.countNote) { $('count-note').textContent = C.countNote; $('count-note').hidden = false; }
+  $('no-boost').textContent = C.noBoost || '';
   $('sign-text').textContent = C.sign.replace(/^I sign this open letter\.\s*/, '');
   $('resend-btn').textContent = RESEND.label;
   document.querySelectorAll('[data-consent]').forEach(function (el) { el.textContent = C.consents[el.getAttribute('data-consent')]; });

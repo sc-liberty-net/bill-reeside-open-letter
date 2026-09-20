@@ -33,6 +33,9 @@ window.OPEN_LETTER = {
     draftNote: '' // approved by Bill Reeside, 2026-09-20
   },
 
+  // Keep this identical to NO_BOOST_LINE in the script's Config.js.
+  noBoost: 'Just share it - there is no need to spend anything. Paid promotion has to be reported to the FEC, and a link from someone you know does more anyway.',
+
   countNote: 'How we count: one signature per email address. We publish the total number of signers and how many have confirmed their email address, and we never count a signature twice.',
 
   sign: 'I sign this open letter. Reeside for Congress may send my name, town and comment to the outlets named above, and they may publish them.',

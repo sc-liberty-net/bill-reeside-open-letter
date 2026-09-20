@@ -200,7 +200,8 @@
       preferredContact: radioValue('preferredContact'),
       shareEmail: f.shareEmail.checked === true,
       campaignEmailOk: f.campaignEmailOk.checked === true,
-      textOk: f.textOk.checked === true
+      textOk: f.textOk.checked === true,
+      networkOk: f.networkOk.checked === true
     };
   }
 

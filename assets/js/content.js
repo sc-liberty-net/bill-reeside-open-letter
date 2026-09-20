@@ -42,7 +42,8 @@ window.OPEN_LETTER = {
   consents: {
     shareEmail: 'Also share my email address with those outlets so a reporter can confirm I signed.',
     campaignEmailOk: 'Send me campaign updates by email.',
-    textOk: 'Send me campaign text messages at the number above. Message and data rates may apply. Reply STOP to opt out.'
+    textOk: 'Send me campaign text messages at the number above. Message and data rates may apply. Reply STOP to opt out.',
+    networkOk: 'Keep me posted about liberty-minded candidates and causes in South Carolina, beyond this campaign.'
   },
 
   // Keep these two matching the confirmation email itself, or people look for the wrong thing.

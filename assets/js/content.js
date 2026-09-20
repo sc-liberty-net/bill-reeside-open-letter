@@ -3,7 +3,7 @@
 window.OPEN_LETTER = {
   test: true, // shows the TEST ribbon; set false on the live copy
   apiUrl: 'https://script.google.com/macros/s/AKfycbw8QOJcVeBI7GY4c4OOy89f1esrwYrGjnKPGxeNyPblUOhnp76LqDBz1wHj1x3gp5iAIA/exec', // the campaign's own script, in bill@reesideforcongress.com
-  pageUrl: 'https://sc-liberty-net.github.io/bill-reeside-open-letter/',
+  pageUrl: 'https://debate.reesideforcongress.com/',
   campaignUrl: 'https://reesideforcongress.com',
   disclaimer: 'Paid for by Reeside for Congress',
   privacy: 'Reeside for Congress will never sell or rent your information, and shares it only as you choose on this form.', // shown once, under the Add my name button

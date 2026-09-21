@@ -129,6 +129,19 @@
     return checked ? checked.value : '';
   }
 
+  // Several boxes, one comma-separated value: "Email, Text".
+  function checkedValues(name) {
+    return Array.prototype.map.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (el) {
+      return el.value;
+    });
+  }
+
+  // Asking to be texted or called without leaving a number cannot be honoured.
+  function wantsPhone() {
+    var picked = checkedValues('preferredContact');
+    return picked.indexOf('Text') !== -1 || picked.indexOf('Phone call') !== -1;
+  }
+
   function validate() {
     var errors = [];
     Object.keys(REQUIRED).forEach(function (name) {
@@ -141,6 +154,9 @@
     var phone = form.elements.phone.value.replace(/\D/g, '');
     if (phone && !(phone.length === 10 || (phone.length === 11 && phone.charAt(0) === '1'))) {
       setError('phone', 'Please enter a 10-digit US number, or leave it blank.'); errors.push('phone');
+    } else if (!phone && wantsPhone()) {
+      setError('phone', 'Add your number so we can reach you that way, or untick Text and Phone call.');
+      errors.push('phone');
     } else { setError('phone', ''); }
     var zip = form.elements.zip.value.trim();
     if (zip && !/^\d{5}(-\d{4})?$/.test(zip)) { setError('zip', 'Five digits, like 29464.'); errors.push('zip'); } else { setError('zip', ''); }
@@ -153,8 +169,20 @@
   function focusField(name) {
     var el = form.elements[name];
     if (el && el.length !== undefined && !el.tagName) el = el[0];
-    if (el && el.focus) el.focus();
+    if (!el || !el.focus) return;
+    // Centre it first: on a phone the focused field otherwise lands under the keyboard.
+    var field = el.closest ? el.closest('.field') : null;
+    if (field && field.scrollIntoView) field.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
   }
+
+  // Ticking Text or Phone call is the moment to ask for a number, not after a failed submit.
+  Array.prototype.forEach.call(form.querySelectorAll('input[name="preferredContact"]'), function (box) {
+    box.addEventListener('change', function () {
+      var missing = wantsPhone() && !form.elements.phone.value.replace(/\D/g, '');
+      setError('phone', missing ? 'We will need your number for that. Add it below.' : '');
+    });
+  });
 
   ['firstName', 'lastName', 'email', 'town', 'county', 'phone', 'zip'].forEach(function (name) {
     form.elements[name].addEventListener('input', function () { setError(name, ''); });
@@ -197,7 +225,7 @@
       comment: comment.value.trim(),
       inviteCode: f.inviteCode.value,
       willingToIntroduce: radioValue('willingToIntroduce'),
-      preferredContact: radioValue('preferredContact'),
+      preferredContact: checkedValues('preferredContact').join(', '),
       shareEmail: f.shareEmail.checked === true,
       campaignEmailOk: f.campaignEmailOk.checked === true,
       textOk: f.textOk.checked === true,

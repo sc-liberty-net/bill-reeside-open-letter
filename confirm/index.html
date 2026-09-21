@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confirm your signature | Bill Reeside for Congress</title>
+<meta name="description" content="Confirm your signature on the open letter asking Lowcountry news outlets to include every SC-01 candidate in a debate.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E4079">
+<link rel="preload" href="../assets/fonts/montserrat-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/oswald-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/site.css?v=13">
+<link rel="icon" href="../assets/img/favicon.png">
+</head>
+<body>
+<header class="masthead">
+  <a class="masthead-logo" href="https://reesideforcongress.com" aria-label="Bill Reeside for Congress, US Congress District 1 SC">
+    <img src="../assets/img/logo.png" width="720" height="388" alt="Bill Reeside, US Congress District 1 SC">
+  </a>
+  <a class="masthead-link" href="https://reesideforcongress.com">reesideforcongress.com</a>
+</header>
+
+<main>
+  <section class="sign">
+    <div class="sign-inner">
+      <!-- Step one: a button, not an automatic confirm. Some mail apps open every link in a
+           message to check it is safe; a click is what proves a person is here. -->
+      <div id="ask">
+        <h2>Confirm your signature</h2>
+        <p class="done-lede">One tap finishes it. Your name goes on the open letter to the Lowcountry newsrooms.</p>
+        <p class="resend"><button type="button" id="go">Confirm my signature</button></p>
+        <p class="count-note" id="ask-note" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="done" id="done" hidden tabindex="-1" aria-labelledby="done-title">
+        <h2 id="done-title">Thank you, you are confirmed.</h2>
+        <p class="done-lede" id="done-lede"></p>
+        <h3>Now the part that matters most</h3>
+        <p>Send your personal link to two or three people you know in the Lowcountry. Everyone who signs through it is counted as yours.</p>
+        <div class="link-box">
+          <label for="personal-link" class="sr">Your personal link</label>
+          <input id="personal-link" readonly>
+        </div>
+        <div class="share" id="share">
+          <button type="button" class="share-btn native" id="share-native" hidden>Share</button>
+          <a class="share-btn" id="share-sms">Text it</a>
+          <a class="share-btn" id="share-email">Email it</a>
+          <a class="share-btn" id="share-fb" target="_blank" rel="noopener">Facebook</a>
+          <a class="share-btn" id="share-x" target="_blank" rel="noopener">Post on X</a>
+          <button type="button" class="share-btn" id="share-copy"><span id="copy-label">Copy link</span></button>
+        </div>
+        <p class="no-boost" id="no-boost"></p>
+        <p class="count-note" id="station" hidden></p>
+      </div>
+
+      <div class="done" id="trouble" hidden tabindex="-1">
+        <h2 id="trouble-title">We could not use that link</h2>
+        <p class="done-lede" id="trouble-lede"></p>
+        <p><a href="../">Go to the open letter</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="disclaimer" data-disclaimer>Paid for by Reeside for Congress</p>
+  <p><a href="https://reesideforcongress.com">reesideforcongress.com</a></p>
+</footer>
+
+<script src="../assets/js/content.js?v=13"></script>
+<script src="../assets/js/token-page.js?v=13"></script>
+</body>
+</html>

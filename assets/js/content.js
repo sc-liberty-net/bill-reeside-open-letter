@@ -1,7 +1,7 @@
 // Everything a campaign person might need to change, in one place.
 // Keep the letter and consent wording identical to the Sheet's CONFIG tab and Config.js.
 window.OPEN_LETTER = {
-  test: true, // shows the TEST ribbon; set false on the live copy
+  test: false, // live: no ribbon
   apiUrl: 'https://script.google.com/macros/s/AKfycbw8QOJcVeBI7GY4c4OOy89f1esrwYrGjnKPGxeNyPblUOhnp76LqDBz1wHj1x3gp5iAIA/exec', // the campaign's own script, in bill@reesideforcongress.com
   pageUrl: 'https://debate.reesideforcongress.com/',
   campaignUrl: 'https://reesideforcongress.com',

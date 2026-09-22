@@ -201,9 +201,34 @@
     statusEl.classList.toggle('is-error', !!isError);
   }
 
+  // Signing takes ten seconds or so: the script writes the row, makes the personal link and
+  // sends the confirmation email before it answers. A spinner alone reads as a hung page, so
+  // say what is happening, in the order it happens.
+  var PROGRESS = [
+    [0, 'Adding your name to the letter…'],
+    [5000, 'Making your personal link…'],
+    [10000, 'Sending your confirmation email…'],
+    [18000, 'Almost there. Thanks for waiting.']
+  ];
+  var progressTimers = [];
+
+  function stopProgress() {
+    progressTimers.forEach(clearTimeout);
+    progressTimers = [];
+  }
+
+  function startProgress() {
+    stopProgress();
+    PROGRESS.forEach(function (step) {
+      if (step[0] === 0) { setStatus(step[1]); return; }
+      progressTimers.push(setTimeout(function () { setStatus(step[1]); }, step[0]));
+    });
+  }
+
   function setBusy(busy, text) {
     submitBtn.disabled = busy;
     submitBtn.querySelector('.submit-label').textContent = busy ? 'Adding your name' : 'Add my name';
+    if (!busy) stopProgress();
     setStatus(text || '');
   }
 
@@ -252,11 +277,14 @@
   }
 
   function send(attempt) {
-    setBusy(true, attempt ? 'Lots of people are signing. Still working on it.' : '');
+    setBusy(true);
+    if (attempt) setStatus('Lots of people are signing. Still working on it.');
+    else startProgress();
     post(payload, function (res) { handle(res, attempt); }, function () { retry(attempt); });
   }
 
   function retry(attempt) {
+    stopProgress();
     if (attempt < RETRY_DELAYS.length) {
       setTimeout(function () { send(attempt + 1); }, RETRY_DELAYS[attempt]);
       return;
